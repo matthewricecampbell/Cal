@@ -1,43 +1,18 @@
-MONTH = ARGV[0]
-YEAR = ARGV[1]
+require './calendar'
 
-def get_month_name(month_number)
-    month_number = month_number.to_i
-	month_number_hash = {01=>"Jan", 02=>"Feb", 03=>"Mar", 04=>"Apr", 05=>"May", 06=>"Jun", 07=>"Jul", 8=>"Aug", 9=>"Sept", 10=>"Oct", 11=>"Nov", 12=>"Dec"}
-	month_number_hash[month_number]
-end
-# def number_of_days_in_month
-# 	{"Jan" => 31, "Feb" => 28, "Mar" => 31, "Apr" => 30, "May" => 31, "Jun" => 30, "Jul" => 31, "Aug" => 30, "Sep" => 31, "Oct" => 30, "Nov" => 31, "Dec" => 30}
-# end
-def zeller_month_number(month_number)
-	month_number = month_number.to_i
-	converter_hash = {01=>13, 02=>14, 03=>3, 04=>4, 05=>5, 06=>6, 07=>7, 8=>8, 9=>9, 10=>10, 11=>11, 12=>12}
-	converter_hash[month_number]
-end
-def leap_year_offset 
- (YEAR.to_i/4).floor+6*(YEAR.to_i/100).floor+(YEAR.to_i/400).floor
-end
-
-def march_offset 
- ((zeller_month_number(MONTH.to_i)+1)*26/10).floor 
-end
-def day_of_week 
- day_of_month = 1
- (day_of_month+march_offset+YEAR.to_i+leap_year_offset)%7
-end
-puts day_of_week
-puts march_offset
-puts leap_year_offset
-puts zeller_month_number(MONTH)
+month = ARGV[0]
+year = ARGV[1]
 
 
+# puts day_of_week
+# puts march_offset
+# puts leap_year_offset
+# puts zeller_month_number(MONTH)
 
-class Calendar
-  puts "    "+get_month_name(MONTH)+" "+YEAR
-  puts "Su Mo Tu We Th Fr Sa"
-end
+get_calendar_for_month_year(month, year)
+puts "Su Mo Tu We Th Fr Sa"
+y = start_day_spacing(month, year).to_s + day_of_the_week_printer(month).insert(1, ' ').insert(2, ' ').insert(4, ' ').insert(5, ' ').insert(7, ' ').insert(8, ' ').insert(10, ' ').insert(11, ' ').insert(13, ' ').insert(14, ' ').insert(16, ' ').insert(17, ' ').insert(19, ' ').insert(20, ' ').insert(22, ' ').insert(23, ' ').insert(25, ' ').insert(28, ' ').insert(31, ' ').insert(34, ' ').insert(37, ' ').insert(40, ' ').insert(43, ' ').insert(46, ' ').insert(49, ' ').insert(52, ' ').insert(55, ' ').insert(58, ' ').insert(61, ' ').insert(64, ' ').insert(67, ' ').insert(70, ' ').insert(73, ' ').insert(76, ' ').insert(79, ' ').insert(82, ' ').insert(85, ' ').insert(88, ' ')
+puts y.scan(/.{1,21}/)
 
-
-
-
- 
+# "123456".scan(/.../){ |x| puts x }
+# .insert(0, ' ').insert(2, ' ').insert(4, ' ').insert(5, ' ').insert(7, ' ').insert(8, ' ').insert(10, ' ').insert(11, ' ').insert(13, ' ').insert(14, ' ').insert(16, ' ').insert(17, ' ').insert(19, ' ').insert(20, ' ').insert(22, ' ').insert(23, ' ').insert(25, ' ').insert(28, ' ').insert(31, ' ').insert(34, ' ').insert(37, ' ').insert(40, ' ').insert(43, ' ').insert(46, ' ').insert(49, ' ').insert(52, ' ').insert(55, ' ').insert(58, ' ').insert(61, ' ').insert(64, ' ').insert(67, ' ').insert(70, ' ')
