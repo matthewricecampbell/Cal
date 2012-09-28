@@ -4,15 +4,43 @@ def get_month_name(month_number)
 	month_number_hash = {01=>"Jan", 02=>"Feb", 03=>"Mar", 04=>"Apr", 05=>"May", 06=>"Jun", 07=>"Jul", 8=>"Aug", 9=>"Sept", 10=>"Oct", 11=>"Nov", 12=>"Dec"}
 	month_number_hash[month_number]
 end
-def number_of_days_in_month(month_number)
+def feb_leap_year(year)
+	year = year.to_i
+	if year%400 == 0 || year%4 == 0 && year%100!=0 
+		return true
+    end
+end
+def number_of_days_in_month(month_number, year)
 	month_number = month_number.to_i
-	days_in_month_hash = {01 => 31, 02 => 28, 03 => 31, 04 => 30, 05 => 31, 06 => 30, 07 => 31, 8 => 30, 9 => 31, 10 => 30, 11 => 31, 12 => 30}
+	days_in_month_hash = {01 => 31, 02 =>(feb_leap_year(year) ? 29 : 28), 03 => 31, 04 => 30, 05 => 31, 06 => 30, 07 => 31, 8 => 31, 9 => 30, 10 => 31, 11 => 30, 12 => 31}
     days_in_month_hash[month_number]
 end
-def day_of_the_week_printer(month)
+def day_of_the_week_printer(month, year)
 	output = ""
-	1.upto(number_of_days_in_month(month)){|number| output = output + number.to_s}
+	1.upto(number_of_days_in_month(month, year)) {|number| 
+		new_output = number.to_s
+		if number > 9
+			new_output = " " + number.to_s
+		elsif number > 1
+			new_output = "  " + number.to_s
+		end
+		output += new_output
+	}
 	return output
+end
+# def space_machine(month)
+# 	if month == 02
+#       day_of_the_week_printer(month).insert(1, ' ').insert(2, ' ').insert(4, ' ').insert(5, ' ').insert(7, ' ').insert(8, ' ').insert(10, ' ').insert(11, ' ').insert(13, ' ').insert(14, ' ').insert(16, ' ').insert(17, ' ').insert(19, ' ').insert(20, ' ').insert(22, ' ').insert(23, ' ').insert(25, ' ').insert(28, ' ').insert(31, ' ').insert(34, ' ').insert(37, ' ').insert(40, ' ').insert(43, ' ').insert(46, ' ').insert(49, ' ').insert(52, ' ').insert(55, ' ').insert(58, ' ').insert(61, ' ').insert(64, ' ').insert(67, ' ').insert(70, ' ').insert(73, ' ').insert(76, ' ').insert(79, ' ').insert(82, ' ')
+#     else
+#       day_of_the_week_printer(month).insert(1, ' ').insert(2, ' ').insert(4, ' ').insert(5, ' ').insert(7, ' ').insert(8, ' ').insert(10, ' ').insert(11, ' ').insert(13, ' ').insert(14, ' ').insert(16, ' ').insert(17, ' ').insert(19, ' ').insert(20, ' ').insert(22, ' ').insert(23, ' ').insert(25, ' ').insert(28, ' ').insert(31, ' ').insert(34, ' ').insert(37, ' ').insert(40, ' ').insert(43, ' ').insert(46, ' ').insert(49, ' ').insert(52, ' ').insert(55, ' ').insert(58, ' ').insert(61, ' ').insert(64, ' ').insert(67, ' ').insert(70, ' ').insert(73, ' ').insert(76, ' ').insert(79, ' ').insert(82, ' ').insert(85, ' ').insert(88, ' ')
+#     end
+# end
+def jan_feb_year_offset(month, year)
+	if month == 01 || month == 02 
+		year = year -1
+	else
+		year
+	end
 end
 def zeller_month_number(month_number)
 	month_number = month_number.to_i
@@ -38,19 +66,19 @@ end
 #Sat=0 ...Fri=6
 def start_day_spacing(month, year)
   if start_day_of_week(month, year) == 0
-  	x = "..................."
+  	x = "                   "
   elsif start_day_of_week(month, year) == 1
-  	x = "."
+  	x = " "
   elsif start_day_of_week(month, year) == 2
-  	x = "...."
+  	x = "    "
   elsif start_day_of_week(month, year) == 3
-  	x = "......."
+  	x = "       "
   elsif start_day_of_week(month, year) == 4
-  	x = ".........."
+  	x = "          "
   elsif start_day_of_week(month, year) == 5
-  	x = "............."
+  	x = "             "
   elsif start_day_of_week(month, year) == 6
-  	x = "................"
+  	x = "                "
   else "Everything Is Broken!" 
   end
   return x
