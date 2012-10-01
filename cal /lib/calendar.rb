@@ -1,9 +1,10 @@
-
+#get_month_name(month_number) takes the argument (01) and returns that corresponding months name (January)
 def get_month_name(month_number)
-    month_number = month_number.to_i
+    month_number = month_number.to_i 
 	month_number_hash = {01=>"January", 02=>"February", 03=>"March", 04=>"April", 05=>"May", 06=>"June", 07=>"July", 8=>"August", 9=>"September", 10=>"October", 11=>"November", 12=>"December"}
 	month_number_hash[month_number]
 end
+#feb_leap_year finds out if it is leap year and coresponds to the days_in_month_hash (ie 02 =>(feb_leap_year(year) ? 29 : 28))
 def feb_leap_year(year)
 	year = year.to_i
 	if year%400 == 0 || year%4 == 0 && year%100!=0 
@@ -28,13 +29,7 @@ def day_of_the_week_printer(month, year)
 	}
 	return output
 end
-# def space_machine(month)
-# 	if month == 02
-#       day_of_the_week_printer(month).insert(1, ' ').insert(2, ' ').insert(4, ' ').insert(5, ' ').insert(7, ' ').insert(8, ' ').insert(10, ' ').insert(11, ' ').insert(13, ' ').insert(14, ' ').insert(16, ' ').insert(17, ' ').insert(19, ' ').insert(20, ' ').insert(22, ' ').insert(23, ' ').insert(25, ' ').insert(28, ' ').insert(31, ' ').insert(34, ' ').insert(37, ' ').insert(40, ' ').insert(43, ' ').insert(46, ' ').insert(49, ' ').insert(52, ' ').insert(55, ' ').insert(58, ' ').insert(61, ' ').insert(64, ' ').insert(67, ' ').insert(70, ' ').insert(73, ' ').insert(76, ' ').insert(79, ' ').insert(82, ' ')
-#     else
-#       day_of_the_week_printer(month).insert(1, ' ').insert(2, ' ').insert(4, ' ').insert(5, ' ').insert(7, ' ').insert(8, ' ').insert(10, ' ').insert(11, ' ').insert(13, ' ').insert(14, ' ').insert(16, ' ').insert(17, ' ').insert(19, ' ').insert(20, ' ').insert(22, ' ').insert(23, ' ').insert(25, ' ').insert(28, ' ').insert(31, ' ').insert(34, ' ').insert(37, ' ').insert(40, ' ').insert(43, ' ').insert(46, ' ').insert(49, ' ').insert(52, ' ').insert(55, ' ').insert(58, ' ').insert(61, ' ').insert(64, ' ').insert(67, ' ').insert(70, ' ').insert(73, ' ').insert(76, ' ').insert(79, ' ').insert(82, ' ').insert(85, ' ').insert(88, ' ')
-#     end
-# end
+
 def jan_feb_year_offset(month, year)
 	month = month.to_i
 	year = year.to_i
@@ -88,36 +83,3 @@ end
 
 
 
-
-# def months_with_thirty_one_days
-# 	if month = 01, 03, 05, 07, 08, 10, 12
-# 		puts (1...31)
-# end
-
-# def months_with_thirty_days
-#    if month = 04, 06, 09, 11
-#    	  puts (1...30)
-# end
-
-# def february
-#    if year %400 == 0 
-#    	put (1...29)
-#    elsif year %100 == 0
-#    	put (1...28)
-#    elsif year %4 == 0
-#    	put (1...29)
-#    else put (1...28)
-# end
-
-
-# month = ARGV[0]
-# year = ARGV[1]
-# puts start_day_of_week(month, year)
-# puts march_offset(month)
-# puts leap_year_offset(year)
-# puts zeller_month_number(month)
-
-# def day_of_the_week_printer(month)
-# 	1.upto(number_of_days_in_month(month)){|number| result = number + result}
-# 	result.to_s
-# end

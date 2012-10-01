@@ -3,7 +3,6 @@ require './calendar'
 month = ARGV[0]
 year = ARGV[1]
 
-
 # puts day_of_week
 # puts march_offset
 # puts leap_year_offset
