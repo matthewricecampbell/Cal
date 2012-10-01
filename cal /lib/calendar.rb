@@ -67,7 +67,7 @@ end
 def get_calendar_for_month_year(month, year)
   puts "    "+get_month_name(month)+" "+year
 end
-#start_day_spacing(month, year) is the padding to assure the start_day_of_week falls under the correct day (ie Sat, Sun, etc.)
+#start_day_spacing(month, year) is the padding to assure the start_day_of_week falls under the correct day (ie Sat, Sun,)
 #Sat=0 ...Fri=6
 def start_day_spacing(month, year)
   if start_day_of_week(month, year) == 0
