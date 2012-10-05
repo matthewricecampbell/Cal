@@ -1,7 +1,6 @@
 class Calendar
 
 def initialize(month, year)
-month = month.to_i
 year = year.to_i
 months_of_the_year_hash = {
 	01 =>{
@@ -65,6 +64,8 @@ months_of_the_year_hash = {
 	'zellers_number'=>12
 	}
 }
+# @month_name = months_of_the_year_hash.each{|key, value| puts "#{key} equals #{value}"}
+# @month_name =1.upto(12){months_of_the_year_hash[1]['name']}
 @month_name = months_of_the_year_hash[month]['name']
 @month_number = months_of_the_year_hash[month]['number']
 @zellers_month_number = months_of_the_year_hash[month]['zellers_number']
@@ -128,13 +129,12 @@ def start_day_padding(month, year)
   end
   return x
 end
-def get_calendar_for_month
-	"   "+@month_name+" "+year
-end
-#simple method that puts the month and year correctly spaced out
-def get_calendar_for_month_year(month, year)
 
-  "      "+@month_name+"       "
+#simple method that puts the month and year correctly spaced out
+
+def get_calendar_for_month_year(month, year)
+  puts "    "+@month_name+" "+year
 end
 
 end#end class Calendar
+

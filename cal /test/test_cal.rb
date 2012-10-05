@@ -87,6 +87,10 @@ end
 		month = 02
 		assert_equal("1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28", days_of_the_week(month, year))
 	end
+  def test_07_ARGV_length
+    month = 02
+    assert_equal(1, month.to_s.length)
+  end
 end
 
 # 0, puts day_of_week(month, year)
