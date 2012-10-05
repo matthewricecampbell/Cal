@@ -128,7 +128,7 @@ def start_day_padding(month, year)
   end
   return x
 end
-def get_calendar_for_month
+def get_calendar_for_month(month, year)
 	"   "+@month_name+" "+year
 end
 #simple method that puts the month and year correctly spaced out

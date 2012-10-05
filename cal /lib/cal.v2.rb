@@ -4,7 +4,7 @@ if ARGV.length == 2
 	month = ARGV[0]
 	year = ARGV[1]
 	cal = Calendar.new(month, year)
-	puts cal.single_month(month, year).join("\n")
+	puts cal.single_month_for_single_month(month, year).join("\n")
 else
 	month = 1
 	year = ARGV[0]
@@ -14,11 +14,22 @@ end
 end
 
 public
-def single_month(month, year)
+def single_month_for_single_month(month, year)
+	cal = Calendar.new(month, year)
+	output = []
+	output << cal.get_calendar_for_month(month, year)
+	output << "Su Mo Tu We Th Fr Sa"
+	padding_and_days_of_week = cal.start_day_padding(month, year).to_s + cal.days_of_the_week(month, year)
+	output << padding_and_days_of_week.scan(/.{1,21}/)
+	output.flatten
+end
+
+public
+def single_month_for_full_year(month, year)
 	cal = Calendar.new(month, year)
 	output = []
 	output << cal.get_calendar_for_month_year(month, year)
-	output << "Su Mo Tu We Th Fr Sa"
+	output << "Su Mo Tu We Th Fr Sa "
 	padding_and_days_of_week = cal.start_day_padding(month, year).to_s + cal.days_of_the_week(month, year)
 	output << padding_and_days_of_week.scan(/.{1,21}/)
 	output.flatten
@@ -26,11 +37,11 @@ end
 
 def full_year(month, year)
 	cal = Calendar.new(month, year)
-	m1 = cal.single_month(month, year)
-	m2 = cal.single_month(month+1, year)
-	m3 = cal.single_month(month+2, year)
+	m1 = cal.single_month_for_full_year(month, year)
+	m2 = cal.single_month_for_full_year(month+1, year)
+	m3 = cal.single_month_for_full_year(month+2, year)
 	8.times do |i| 
-	puts m1[i]+m2[i]+m3[i]
+	puts m1[i]+"  "+m2[i]+"  "+m3[i]
 end
 end
 
