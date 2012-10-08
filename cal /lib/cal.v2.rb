@@ -1,19 +1,19 @@
 require './calendar.v2'
 def cal_printer
-if ARGV.length == 2
-	month = ARGV[0]
-	year = ARGV[1]
-	cal = Calendar.new(month, year)
-	puts cal.single_month_for_single_month(month, year).join("\n")
-else
-	month = 1
-	year = ARGV[0]
-	puts "                               "+year
-	puts cal.full_year_a(month, year)
-	puts cal.full_year_b(month, year)
-	puts cal.full_year_c(month, year)
-	puts cal.full_year_d(month, year)
-end
+	if ARGV.length == 2
+		month = ARGV[0]
+		year = ARGV[1]
+		cal = Calendar.new(month, year)
+		puts cal.single_month_for_single_month(month, year).join("\n")
+	else
+		month = 1
+		year = ARGV[0]
+		puts "                               "+year
+		cal.full_year_a(month, year)
+		cal.full_year_b(month, year)
+		cal.full_year_c(month, year)
+		cal.full_year_d(month, year)
+	end
 end
 
 public
